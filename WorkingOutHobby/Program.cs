@@ -1,7 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using WorkingOutHobby.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<WorkoutDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("workoutDb")));
 
 var app = builder.Build();
 
