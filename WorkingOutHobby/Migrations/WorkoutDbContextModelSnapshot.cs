@@ -46,7 +46,7 @@ namespace WorkingOutHobby.Migrations
 
                     b.HasIndex("WorkoutTypeId");
 
-                    b.ToTable("Workouts", (string)null);
+                    b.ToTable("Workouts");
                 });
 
             modelBuilder.Entity("WorkingOutHobby.Models.WorkoutType", b =>
@@ -63,7 +63,7 @@ namespace WorkingOutHobby.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("WorkoutTypes", (string)null);
+                    b.ToTable("WorkoutTypes");
 
                     b.HasData(
                         new

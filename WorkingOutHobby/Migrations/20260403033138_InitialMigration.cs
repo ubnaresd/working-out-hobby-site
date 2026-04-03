@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace WorkingOutHobby.Migrations
 {
     /// <inheritdoc />
@@ -44,6 +46,17 @@ namespace WorkingOutHobby.Migrations
                         principalTable: "WorkoutTypes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "WorkoutTypes",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Strength" },
+                    { 2, "Cardio" },
+                    { 3, "HIIT" },
+                    { 4, "Flexibility" }
                 });
 
             migrationBuilder.CreateIndex(

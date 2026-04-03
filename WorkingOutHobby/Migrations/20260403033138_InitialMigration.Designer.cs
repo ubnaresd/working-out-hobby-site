@@ -12,8 +12,8 @@ using WorkingOutHobby.Models;
 namespace WorkingOutHobby.Migrations
 {
     [DbContext(typeof(WorkoutDbContext))]
-    [Migration("20260321163454_SeedWorkoutTypes")]
-    partial class SeedWorkoutTypes
+    [Migration("20260403033138_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
