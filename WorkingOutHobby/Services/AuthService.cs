@@ -54,6 +54,36 @@ public class AuthService(WorkoutDbContext context, IConfiguration configuration)
         return response;
     }
 
+    public async Task<TokenResponseDto?> RefreshTokensAsync(RefreshTokenRequestDto request)
+    {
+        var user = await ValidateRefreshTokenAsync(request.UserId, request.RefreshToken);
+
+        if (user is null)
+        {
+            return null;
+        }
+
+        var response = new TokenResponseDto
+        {
+            Jwt = CreateToken(user),
+            RefreshToken = await GenerateAndSaveRefreshTokenAsync(user)
+        };
+
+        return response;
+    }
+
+    private async Task<User?> ValidateRefreshTokenAsync(Guid userId, string refreshToken)
+    {
+        var user = await context.Users.FindAsync(userId);
+
+        if (user is null || user.RefreshToken != refreshToken || user.RefreshTokenExpiry <= DateTime.UtcNow)
+        {
+            return null;
+        }
+
+        return user;
+    }
+
     private string GenerateRefreshToken()
     {
         var randomNumber = new byte[32];
