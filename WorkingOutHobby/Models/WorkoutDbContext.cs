@@ -9,6 +9,7 @@ public class WorkoutDbContext : DbContext
 
     public DbSet<WorkoutType> WorkoutTypes { get; set; }
     public DbSet<Workout> Workouts { get; set; }
+    public DbSet<User> Users { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
