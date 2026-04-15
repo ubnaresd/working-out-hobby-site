@@ -19,4 +19,17 @@ public class AuthController(IAuthService authService) : ControllerBase
 
         return Ok(user);
     }
+
+    [HttpPost("Login")]
+    public async Task<ActionResult<TokenResponseDto>> Login(UserDto request)
+    {
+        var tokens = await authService.LoginAsync(request);
+
+        if (tokens is null)
+        {
+            return BadRequest("Invalid username or password");
+        }
+
+        return Ok(tokens);
+    }
 }
