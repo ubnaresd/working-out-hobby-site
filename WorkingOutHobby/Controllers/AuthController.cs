@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using WorkingOutHobby.Models;
 using WorkingOutHobby.Services;
 
@@ -31,5 +32,19 @@ public class AuthController(IAuthService authService) : ControllerBase
         }
 
         return Ok(tokens);
+    }
+
+    [Authorize]
+    [HttpGet]
+    public ActionResult<string> AuthenticateOnlyEndpoint()
+    {
+        return Ok("You are authenticated");
+    }
+
+    [Authorize(Roles = "Admin")]
+    [HttpGet("admin-route")]
+    public ActionResult<string> AdminOnlyEndpoint()
+    {
+        return Ok("You are an admin");
     }
 }
