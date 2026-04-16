@@ -1,0 +1,84 @@
+﻿@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="text-center mb-4">
+                <h1 class="display-4">Join the Hub</h1>
+                <p class="text-primary">Create an account to start tracking workouts.</p>
+            </div>
+
+            <div class="card shadow-sm">
+                <div class="card-body p-4">
+                    <form id="registerForm">
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Username</label>
+                            <input type="text" id="username" class="form-control" placeholder="Choose a username" required />
+                            <div class="form-text">This is how you will log in next time.</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Password</label>
+                            <input type="password" id="password" class="form-control" placeholder="Create a strong password" required />
+                        </div>
+
+                        <div id="errorMessage" class="alert alert-danger d-none" role="alert">
+                            That username is already taken.
+                        </div>
+
+                        <div id="successMessage" class="alert alert-success d-none" role="alert">
+                            Account created! Redirecting to login...
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg">Create Account</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-center bg-white py-3">
+                    <p class="mb-0">Already have an account? <a asp-action="Login" class="text-primary fw-bold text-decoration-none">Log in here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('registerForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const errorDiv = document.getElementById('errorMessage');
+        const successDiv = document.getElementById('successMessage');
+        
+        errorDiv.classList.add('d-none');
+        successDiv.classList.add('d-none');
+        
+        const payload = {
+            username: document.getElementById('username').value,
+            password: document.getElementById('password').value
+        };
+
+        try {
+            const response = await fetch('/api/auth/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (response.ok) {
+                successDiv.classList.remove('d-none');
+                setTimeout(() => {
+                    window.location.href = '/account/login';
+                }, 1500);
+            } else {
+                const errorText = await response.text();
+                errorDiv.innerText = errorText || "Registration failed.";
+                errorDiv.classList.remove('d-none');
+            }
+        } catch (err) {
+            errorDiv.innerText = "Connection error. Please try again.";
+            errorDiv.classList.remove('d-none');
+        }
+    });
+</script>

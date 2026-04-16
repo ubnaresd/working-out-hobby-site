@@ -16,6 +16,19 @@ builder.Services.AddDbContext<WorkoutDbContext>(options =>
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
+        options.Events = new JwtBearerEvents
+        {
+            OnMessageReceived = context => {
+                context.Token = context.Request.Cookies["X-Access-Token"];
+                return Task.CompletedTask;
+            },
+            OnChallenge = context => {
+                context.HandleResponse();
+                context.Response.Redirect("/Account/Login");
+                return Task.CompletedTask;
+            }
+        };
+
         options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuer = true,
@@ -28,6 +41,11 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateIssuerSigningKey = true
         };
     });
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/Account/Login";
+});
 
 builder.Services.AddScoped<IAuthService, AuthService>();
 

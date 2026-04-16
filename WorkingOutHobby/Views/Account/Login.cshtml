@@ -1,0 +1,77 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="text-center mb-4">
+                <h1 class="display-4">Welcome Back</h1>
+                <p class="text-primary">Log in to track your fitness journey.</p>
+            </div>
+
+            <div class="card shadow-sm">
+                <div class="card-body p-4">
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Username</label>
+                            <input type="text" id="username" class="form-control" placeholder="Enter your username" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Password</label>
+                            <input type="password" id="password" class="form-control" placeholder="••••••••" required />
+                        </div>
+
+                        <div id="errorMessage" class="alert alert-danger d-none" role="alert">
+                            Invalid username or password.
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg">Login</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-center bg-white py-3">
+                    <p class="mb-0">Don't have an account? <a asp-action="Register" class="text-primary fw-bold text-decoration-none">Sign up here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const errorDiv = document.getElementById('errorMessage');
+        errorDiv.classList.add('d-none');
+        
+        const payload = {
+            username: document.getElementById('username').value,
+            password: document.getElementById('password').value
+        };
+
+        try {
+            const response = await fetch('/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                
+                // Use localStorage values for UI state management (http-cookie for actual auth)
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('refreshToken', data.refreshToken);
+    
+                window.location.href = '/Progress';
+            } else {
+                    errorDiv.classList.remove('d-none');
+                }
+            } catch (err) {
+                errorDiv.innerText = "Connection error. Please try again.";
+                errorDiv.classList.remove('d-none');
+            }
+    });
+</script>
