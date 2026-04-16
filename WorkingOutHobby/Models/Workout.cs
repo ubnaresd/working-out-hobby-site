@@ -8,4 +8,7 @@ public class Workout
     public string? Notes { get; set; }
     public int WorkoutTypeId { get; set; }
     public WorkoutType? WorkoutType { get; set; }
+    public Guid UserId { get; set; }
+
+    public User? User { get; set; }
 }

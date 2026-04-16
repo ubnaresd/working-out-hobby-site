@@ -20,13 +20,22 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Progress" asp-action="Index">Progress</a>
+                        <li class="nav-item auth-only" style="display:none;">
+                            <a class="nav-link text-dark fw-bold" asp-controller="Progress" asp-action="Index">Progress</a>
+                        </li>
+                    </ul>
+
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item guest-only">
+                            <a class="btn btn-outline-primary" asp-controller="Account" asp-action="Login">Login</a>
+                        </li>
+                        <li class="nav-item auth-only" style="display:none;">
+                            <button class="btn btn-link nav-link text-danger" onclick="logoutUser()">Logout</button>
                         </li>
                     </ul>
                 </div>
@@ -50,3 +59,26 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+        
+        if (isLoggedIn) {
+            // Show Progress and Logout
+            document.querySelectorAll('.auth-only').forEach(el => el.style.setProperty('display', 'block', 'important'));
+            // Hide Login
+            document.querySelectorAll('.guest-only').forEach(el => el.style.setProperty('display', 'none', 'important'));
+        }
+    });
+
+    async function logoutUser() {
+        localStorage.removeItem("isLoggedIn");
+        localStorage.removeItem("jwt");
+        localStorage.removeItem("refreshToken");
+
+        await fetch('/api/auth/logout', { method: 'POST' });
+
+        window.location.href = '/';
+    }
+</script>
