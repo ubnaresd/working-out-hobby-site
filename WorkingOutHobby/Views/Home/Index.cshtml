@@ -1,8 +1,98 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Working Out Hub";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h1 class="fw-bold">
+            Working Out Hub
+        </h1>
+
+        <p class="lead text-muted">
+            Welcome to our website! Where we talk about working out as a hobby. 
+            Explore workout routines, equipment, the benefits of exercise, and ways to track your progress. 
+        </p>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body d-flex flex-column">
+                    <h3 class="h5 fw-bold">
+                        About Working Out
+                    </h3>
+
+                    <p class="text-muted">
+                        Learn why working out is a great hobby and explore the physical and mental benefits.
+                    </p>
+
+                    <a asp-controller="Home" asp-action="AboutWorkingOut" class=" btn btn-dark">Learn More</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body d-flex flex-column">
+                    <h3 class="h5 fw-bold">
+                        About The Creators
+                    </h3>
+
+                    <p class="text-muted">
+                        Meet the creators of this project.
+                    </p>
+
+                    <a asp-controller="Home" asp-action="AboutCreator" class="btn btn-dark">Meet the Team</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body d-flex flex-column">
+                    <h3 class="h5 fw-bold">
+                        Workout Routines
+                    </h3>
+
+                    <p class="text-muted">
+                        Explore workout plans for different muscle groups and fitness goals.
+                    </p>
+
+                    <a asp-controller="Home" asp-action="Routines" class="btn btn-dark">View Routines</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body d-flex flex-column">
+                    <h3 class="h5 fw-bold">
+                        Equipment Guide
+                    </h3>
+
+                    <p class="text-muted">
+                        Learn about workout machines and equipment, what they do, and which muscles they target.
+                    </p>
+
+                    <a asp-controller="Home" asp-action="Equipment" class="btn btn-dark">See Equipment</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body d-flex flex-column">
+                    <h3 class="h5 fw-bold">
+                        Progress Tracker
+                    </h3>
+
+                    <p class="text-muted">
+                        Discover how you can record your workouts and keep track of your fitness progress over time.
+                    </p>
+
+                    <a asp-controller="Progress" asp-action="Index" class="btn btn-dark">Track Progress</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
