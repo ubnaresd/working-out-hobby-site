@@ -18,7 +18,12 @@ namespace WorkingOutHobby.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult AboutWorkingOut()
+        {
+            return View();
+        }
+
+        public IActionResult AboutCreator()
         {
             return View();
         }
