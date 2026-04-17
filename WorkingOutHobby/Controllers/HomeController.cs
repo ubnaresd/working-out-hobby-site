@@ -23,7 +23,7 @@ namespace WorkingOutHobby.Controllers
             return View();
         }
 
-        public IActionResult AboutCreator()
+        public IActionResult AboutTheCreators()
         {
             return View();
         }
