@@ -37,6 +37,12 @@ body {
     color: #b8c2d1 !important;
 }
 
+.title-icon {
+    width: 30px;
+    height:30px;
+    object-fit: contain;
+}
+
 .text-muted {
     color: #9aa4b2 !important;
 }
