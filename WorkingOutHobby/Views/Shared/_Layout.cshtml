@@ -19,15 +19,31 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="AboutWorkingOut">About Hobby</a>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="AboutTheCreators">About Creator</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Workout" asp-action="Routines">Routines</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Workout" asp-action="Equipment">Equipment</a>
+                        </li>
+
                         <li class="nav-item auth-only" style="display:none;">
                             <a class="nav-link text-dark fw-bold" asp-controller="Progress" asp-action="Index">Progress</a>
                         </li>
+
                     </ul>
 
                     <ul class="navbar-nav ms-auto">
