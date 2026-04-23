@@ -1,0 +1,113 @@
+﻿@{
+    ViewData["Title"] = "Workout Routines";
+}
+
+<h2 class="mb-3">Workout Routines</h2>
+<p>Explore various workout routines tailored for different fitness goals.</p>
+
+<div class="row mt-4">
+
+    <!-- Legs -->
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <div class="card-body text-center">
+                <h5>Legs</h5>
+                <p>Squats, lunges, leg press, and calf raises.</p>
+                <a href="#" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#legsModal">
+                    View Details
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Arms -->
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <div class="card-body text-center">
+                <h5>Arms</h5>
+                <p>Bicep curls, tricep dips, push-ups, and hammer curls.</p>
+                <a href="#" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#armsModal">
+                    View Details
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Abs -->
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <div class="card-body text-center">
+                <h5>Abs</h5>
+                <p>Crunches, planks, sit-ups, and leg raises.</p>
+                <a href="#" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#absModal">
+                    View Details
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- ================= MODALS ================= -->
+<!-- Legs Modal -->
+<div class="modal fade" id="legsModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-light">
+
+            <div class="modal-header">
+                <h5 class="modal-title">Leg Workout</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                <p><strong>Exercises:</strong> Squats, Lunges, Leg Press, Calf Raises</p>
+                <p><strong>Sets:</strong> 3–4</p>
+                <p><strong>Reps:</strong> 8–12</p>
+                <p><strong>Tip:</strong> Keep your back straight and go slow for better form.</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Arms Modal -->
+<div class="modal fade" id="armsModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-light">
+
+            <div class="modal-header">
+                <h5 class="modal-title">Arm Workout</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                <p><strong>Exercises:</strong> Bicep Curls, Tricep Dips, Push-ups, Hammer Curls</p>
+                <p><strong>Sets:</strong> 3–4</p>
+                <p><strong>Reps:</strong> 10–15</p>
+                <p><strong>Tip:</strong> Focus on controlled movements, not heavy weight.</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Abs Modal -->
+<div class="modal fade" id="absModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-light">
+
+            <div class="modal-header">
+                <h5 class="modal-title">Ab Workout</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                <p><strong>Exercises:</strong> Crunches, Planks, Sit-ups, Leg Raises</p>
+                <p><strong>Sets:</strong> 3–5</p>
+                <p><strong>Reps:</strong> 15–20</p>
+                <p><strong>Tip:</strong> Engage your core and avoid pulling on your neck.</p>
+            </div>
+
+        </div>
+    </div>
+</div>

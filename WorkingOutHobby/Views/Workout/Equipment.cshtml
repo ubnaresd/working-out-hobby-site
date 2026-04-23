@@ -1,0 +1,67 @@
+﻿<style>
+    .equipment-img {
+        height: 220px;
+        object-fit: contain;
+        background-color: #e9d4;
+    }
+
+    .card {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .card-body {
+        padding: 1.5rem;
+    }
+
+    .card h5 {
+        font-weight: 600;
+        margin-top: 10px;
+    }
+
+    .card p {
+        color: #bbb;
+        font-size: 0.95rem;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        transition: 0.2s ease-in-out;
+    }
+</style>
+
+<h2 class="mb-4">Equipment Guide</h2>
+
+<div class="row g-4">
+
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <img src="~/images/dumbbells.png" class="card-img-top equipment-img" />
+            <div class="card-body text-center">
+                <h5>Dumbbells</h5>
+                <p>Used for strength training and muscle building.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <img src="~/images/treadmill.png" class="card-img-top equipment-img" />
+            <div class="card-body text-center">
+                <h5>Treadmill</h5>
+                <p>Great for cardio and endurance workouts.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <img src="~/images/benchpress.png" class="card-img-top equipment-img" />
+            <div class="card-body text-center">
+                <h5>Bench Press</h5>
+                <p>Essential for chest and upper body workouts.</p>
+            </div>
+        </div>
+    </div>
+
+</div>
