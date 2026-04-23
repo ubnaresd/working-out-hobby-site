@@ -28,16 +28,6 @@ namespace WorkingOutHobby.Controllers
             return View();
         }
 
-        public IActionResult Routines()
-        {
-            return View();
-        }
-
-        public IActionResult Equipment()
-        {
-            return View();
-        }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
